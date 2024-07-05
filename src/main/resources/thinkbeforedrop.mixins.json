@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.iafenvoy.thinkbeforedrop.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "thinkbeforedrop.refmap.json",
+  "client": [
+    "ClientPlayerEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
