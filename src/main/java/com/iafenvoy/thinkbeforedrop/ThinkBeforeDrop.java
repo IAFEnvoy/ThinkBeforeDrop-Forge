@@ -3,6 +3,7 @@ package com.iafenvoy.thinkbeforedrop;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.minecraftforge.client.ConfigGuiHandler;
+import net.minecraftforge.client.ConfigScreenHandler;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -22,6 +23,6 @@ public class ThinkBeforeDrop {
 
     private void doClientStuff(final FMLClientSetupEvent event) {
         AutoConfig.register(ModConfig.class, GsonConfigSerializer::new);
-        ModLoadingContext.get().registerExtensionPoint(ConfigGuiHandler.ConfigGuiFactory.class, () -> new ConfigGuiHandler.ConfigGuiFactory((client, screen) -> AutoConfig.getConfigScreen(ModConfig.class, screen).get()));
+        ModLoadingContext.get().registerExtensionPoint(ConfigGuiHandler.ConfigScreenFactory.class, () -> new ConfigGuiHandler.ConfigGuiFactory((client, screen) -> AutoConfig.getConfigScreen(ModConfig.class, screen).get()));
     }
 }
