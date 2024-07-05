@@ -1,17 +1,19 @@
 package com.iafenvoy.thinkbeforedrop;
 
 import me.shedaniel.autoconfig.AutoConfig;
-import net.minecraft.block.Block;
-import net.minecraft.block.OreBlock;
-import net.minecraft.block.ShulkerBoxBlock;
-import net.minecraft.item.*;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.TextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.OreBlock;
+import net.minecraft.world.level.block.ShulkerBoxBlock;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.awt.*;
 
 @OnlyIn(Dist.CLIENT)
 public class DropManager {
@@ -49,7 +51,7 @@ public class DropManager {
                 if (block instanceof OreBlock)
                     return true;
         if (config.internal.disc)
-            if (item instanceof MusicDiscItem)
+            if (item instanceof RecordItem)
                 return true;
         if (config.internal.uncommon)
             if (item.getRarity(stack) == Rarity.UNCOMMON)
@@ -65,7 +67,7 @@ public class DropManager {
                 return true;
         }
         if (config.internal.hasNbt) {
-            CompoundNBT tag = stack.getTag();
+            CompoundTag tag = stack.getTag();
             if (tag != null)
                 if (tag.contains("display") || tag.getBoolean("Unbreakable") || tag.contains("CanDestroy") || tag.contains("CanPlaceOn") || tag.contains("StoredEnchantments") || tag.contains("AttributeModifiers"))
                     return true;
@@ -98,7 +100,7 @@ public class DropManager {
         return false;
     }
 
-    public static TextComponent getWarningText() {
-        return new TranslationTextComponent("tbt.warning");
+    public static Component getWarningText() {
+        return new TranslatableComponent("tbt.warning");
     }
 }
