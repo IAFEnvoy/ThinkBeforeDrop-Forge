@@ -3,17 +3,13 @@ package com.iafenvoy.thinkbeforedrop;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.OreBlock;
 import net.minecraft.world.level.block.ShulkerBoxBlock;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.registries.ForgeRegistries;
-
-import java.awt.*;
 
 @OnlyIn(Dist.CLIENT)
 public class DropManager {
@@ -46,10 +42,6 @@ public class DropManager {
         if (config.internal.armor)
             if (item instanceof ArmorItem || item instanceof ElytraItem)
                 return true;
-        if (config.internal.ore)
-            if (block != null)
-                if (block instanceof OreBlock)
-                    return true;
         if (config.internal.disc)
             if (item instanceof RecordItem)
                 return true;
@@ -101,6 +93,6 @@ public class DropManager {
     }
 
     public static Component getWarningText() {
-        return new TranslatableComponent("tbt.warning");
+        return Component.translatable("tbt.warning");
     }
 }

@@ -34,7 +34,6 @@ public class ModConfig implements ConfigData {
         public boolean tool = false;//所有工具
         public boolean shulkerBox = false;//所有潜影盒
         public boolean armor = false;//所有装备
-        public boolean ore = false;//所有矿石
         public boolean disc = false;//所有唱片
         public boolean uncommon = false;//所有黄名物品
         public boolean rare = false;//所有蓝名物品
