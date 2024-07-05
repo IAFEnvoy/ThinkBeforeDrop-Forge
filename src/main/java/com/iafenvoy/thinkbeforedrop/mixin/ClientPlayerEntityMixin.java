@@ -26,7 +26,7 @@ public class ClientPlayerEntityMixin extends AbstractClientPlayerEntity {
         super(world, profile);
     }
 
-    @Inject(method = "drop", at = @At("HEAD"), cancellable = true, remap = false)
+    @Inject(method = "drop", at = @At("HEAD"), cancellable = true)
     public void beforeDropItem(boolean dropEntireStack, CallbackInfoReturnable<Boolean> cir) {
         if (!DropManager.shouldThrow(this.inventory.getSelected(), this.inventory.selected)) {
             assert minecraft.player != null;
